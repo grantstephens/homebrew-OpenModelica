@@ -6,40 +6,45 @@ class Openmodelica < Formula
   desc "OpenModelica is an open-source Modelica-based modeling and simulation environment intended for industrial and academic usage."
   homepage "https://openmodelica.org/"
   # url "https://github.com/OpenModelica/OpenModelica/archive/v1.9.3.tar.gz"
-  version "1.9.3"
+  version "1.9.4-dev"
   sha256 ""
   head "https://github.com/OpenModelica/OpenModelica.git", :branch => "v1.9.3"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
                                          #    :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
   # depends_on "cmake" => :build
-  depends_on :autoconf
-  # needs "boost"
+
+  depends_on "autoconf"
   depends_on "gettext"
-  # depends_on "gcc"
-  # depends_on "lp_solve"
-  # depends_on "cmake"
-  # depends_on "hdf5"
-  # depends_on "readline"
-  # depends_on "sundials"
-  # depends_on "openblas"
   depends_on "liblas"
   depends_on "lapack"
-  # depends_on "gnu-sed"
-  # depends_on "open-mpi"
   depends_on "omniorb"
-  # depends_on "libtool"
-  # depends_on "subversion"
-  # depends_on "ncurses"
-  # depends_on "automake"
+
+  depends_on "boost"
+  # depends_on "gcc"
+  depends_on "lp_solve"
+  depends_on "cmake"
+  depends_on "hdf5"
+  depends_on "readline"
+  depends_on "sundials"
+  # depends_on "openblas"
+
+  depends_on "gnu-sed"
+  # depends_on "open-mpi"
+  depends_on "xz"
+  depends_on "libtool"
+  depends_on "subversion"
+  depends_on "ncurses"
+  depends_on "automake"
   conflicts_with "hwloc", :because => "yellowduck also ships a duck binary"
+
   # depends_on "dyld-headers"
   # depends_on "cppunit"
   # depends_on "isl"
   # depends_on "mumps"
   # depends_on "git"
   # depends_on "suite-sparse"
-  depends_on "qmake"
+
 
   # depends_on :gfortran
   # depends_on :x11 # if your formula requires any X11/XQuartz components
