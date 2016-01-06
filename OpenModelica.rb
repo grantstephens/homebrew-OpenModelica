@@ -12,8 +12,6 @@ class Openmodelica < Formula
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
                                          #    :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
-  # depends_on "cmake" => :build
-
   depends_on "autoconf"
   depends_on "gettext"
   depends_on "liblas"
@@ -29,49 +27,22 @@ class Openmodelica < Formula
   depends_on "gnu-sed"
   depends_on "xz"
   depends_on "libtool"
-  depends_on "subversion"
   depends_on "ncurses"
   depends_on "automake"
   conflicts_with "hwloc", :because => "yellowduck also ships a duck binary"
 
-  # depends_on "dyld-headers"
-  # depends_on "cppunit"
-  # depends_on "isl"
-  # depends_on "mumps"
-  # depends_on "git"
-  # depends_on "suite-sparse"
-
-
-  # depends_on :gfortran
-  # depends_on :x11 # if your formula requires any X11/XQuartz components
-
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # export PATH=/usr/local/Cellar/gettext/0.19.6/bin/
-    # export LIBCURL_LDFLAGS=-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib
-    # export LIBCURL_CFLAGS=-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin
-# ./configure LDFLAGS="-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib" CFLAGS="-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin " CC=clang CXX=clang++ --without-omniORB --disable-omnotebook --disable-modelica3d --without-paradiseo --disable-paramodelica --disable-omplot -with-lapack=openblas
-    # Remove unrecognized options if warned by configure
     ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
     ENV['LDFLAGS']='-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib'
-    # ENV['PATH']='$PATH:/usr/local/Cellar/gettext/0.19.6/bin/'
-    # system "PATH=$PATH:/usr/local/Cellar/gettext/0.19.6/bin/"
-    system "git submodule update"
-    # system "make gitclean"
     system "autoconf"
-    # system "mkdir libraries"
     system "./configure", "--disable-debug",
                           "--with-omniORB",
                           "--disable-omnotebook",
                           "--disable-modelica3d",
                           "--without-paradiseo",
                           "--disable-paramodelica",
-                          "--disable-omplot"
-                          # "--disable-dependency-tracking",
-                          # "--disable-silent-rules",
-                          # "--prefix=#{prefix}",
-                          # "--with-lapack=openblas"
-    # system "cmake", ".", *std_cmake_args
+                          "--disable-omplot",
+													"--prefix=#{prefix}"
     system "make -j6 omc"
     system "make -j6 omlibrary-all"
     # system "(cd testsuite/partest && ./runtests.pl)"
