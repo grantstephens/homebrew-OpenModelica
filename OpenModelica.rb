@@ -14,7 +14,7 @@ class Openmodelica < Formula
                                          #    :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
   # depends_on "cmake" => :build
   depends_on :autoconf
-  needs "boost"
+  # needs "boost"
   depends_on "gettext"
   # depends_on "gcc"
   # depends_on "lp_solve"
@@ -39,7 +39,7 @@ class Openmodelica < Formula
   # depends_on "mumps"
   # depends_on "git"
   # depends_on "suite-sparse"
-  # depends_on ""
+  depends_on "qmake"
 
   # depends_on :gfortran
   # depends_on :x11 # if your formula requires any X11/XQuartz components
