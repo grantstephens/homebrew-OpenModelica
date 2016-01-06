@@ -8,10 +8,10 @@ class Openmodelica < Formula
   # url "https://github.com/OpenModelica/OpenModelica/archive/v1.9.3.tar.gz"
   version "1.9.4-dev"
   sha256 ""
-  head "https://github.com/OpenModelica/OpenModelica.git", :branch => "v1.9.3"
+  head "https://github.com/OpenModelica/OpenModelica.git", :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
-                                         #    :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
+                                         #    :branch => "v1.9.3"
   depends_on "autoconf"
   depends_on "gettext"
   depends_on "liblas"
@@ -29,7 +29,8 @@ class Openmodelica < Formula
   depends_on "libtool"
   depends_on "ncurses"
   depends_on "automake"
-  conflicts_with "hwloc", :because => "yellowduck also ships a duck binary"
+  conflicts_with "hwloc", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
+	conflicts_with "open-mpi", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
 
   def install
     ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
