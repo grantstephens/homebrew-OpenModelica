@@ -14,7 +14,7 @@ class Openmodelica < Formula
                                          #    :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
   # depends_on "cmake" => :build
   depends_on :autoconf
-  # depends_on "boost"
+  needs "boost"
   depends_on "gettext"
   # depends_on "gcc"
   # depends_on "lp_solve"
@@ -32,7 +32,7 @@ class Openmodelica < Formula
   # depends_on "subversion"
   # depends_on "ncurses"
   # depends_on "automake"
-  # conflicts_with "hwloc", :because => "yellowduck also ships a duck binary"
+  conflicts_with "hwloc", :because => "yellowduck also ships a duck binary"
   # depends_on "dyld-headers"
   # depends_on "cppunit"
   # depends_on "isl"
@@ -73,7 +73,8 @@ class Openmodelica < Formula
     # system "cmake", ".", *std_cmake_args
     system "make -j6 omc"
     system "make -j6 omlibrary-all"
-    system "(cd testsuite/partest && ./runtests.pl)"
+    # system "(cd testsuite/partest && ./runtests.pl)"
+    prefix.install Dir["build/*"]
   end
 
   test do
