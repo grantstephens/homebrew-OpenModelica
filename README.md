@@ -16,3 +16,7 @@ Open MPI and hwloc cause issues with the compiling process but can be installed 
 ```
 brew install open-mpi hwloc
 ```
+If the install is failing you can try the following to see what is going on:
+```
+brew install --verbose --debug --HEAD openmodelica
+```
