@@ -6,9 +6,9 @@ class Openmodelica < Formula
   desc "OpenModelica is an open-source Modelica-based modeling and simulation environment intended for industrial and academic usage."
   homepage "https://openmodelica.org/"
   # url "https://github.com/OpenModelica/OpenModelica/archive/v1.9.3.tar.gz"
-  version "v1.9.4-fault-find"
+  version "v1.9.4-working"
   sha256 ""
-  head "https://github.com/OpenModelica/OpenModelica.git", :revision => "7dfbb017b3da1f05671a15989aff0799ffdf2632"
+  head "https://github.com/OpenModelica/OpenModelica.git", :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
                                          #    :branch => "v1.9.3"
