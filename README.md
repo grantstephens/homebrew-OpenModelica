@@ -7,6 +7,12 @@ Tests to be written soon.
 To install:
 ```
 brew install subversion
+brew tap homebrew/science
+brew tap homebrew/dupes
 brew tap RexFuzzle/OpenModelica
 brew install OpenModelica --HEAD
+```
+Open MPI and hwloc cause issues with the compiling process but can be installed afterwards again by doing
+```
+brew install open-mpi hwloc
 ```
