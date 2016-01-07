@@ -6,9 +6,9 @@ class Openmodelica < Formula
   desc "OpenModelica is an open-source Modelica-based modeling and simulation environment intended for industrial and academic usage."
   homepage "https://openmodelica.org/"
   # url "https://github.com/OpenModelica/OpenModelica/archive/v1.9.3.tar.gz"
-  version "v1.9.4-dev.17+g3b35f13"
+  version "v1.9.4-fault-find"
   sha256 ""
-  head "https://github.com/OpenModelica/OpenModelica.git", :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
+  head "https://github.com/OpenModelica/OpenModelica.git", :revision => "7dfbb017b3da1f05671a15989aff0799ffdf2632"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
                                          #    :branch => "v1.9.3"
@@ -35,7 +35,7 @@ class Openmodelica < Formula
   def install
     ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
     ENV['LDFLAGS']='-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib'
-		system "svn ls https://openmodelica.org/svn --non-interactive --trust-server-cert"
+		system "svn ls https://openmodelica.org/svn/OpenModelica --non-interactive --trust-server-cert"
     system "autoconf"
     system "./configure", "--disable-debug",
                           "--with-omniORB",
