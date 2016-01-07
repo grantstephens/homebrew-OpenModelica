@@ -35,7 +35,7 @@ class Openmodelica < Formula
   def install
     ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
     ENV['LDFLAGS']='-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib'
-		system "svn ls https://svn.openmodelica.org/"
+		system "svn ls https://openmodelica.org/svn --non-interactive --trust-server-cert"
     system "autoconf"
     system "./configure", "--disable-debug",
                           "--with-omniORB",
