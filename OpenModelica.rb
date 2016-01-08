@@ -1,17 +1,19 @@
-# Documentation: https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Formula-Cookbook.md
-#                http://www.rubydoc.info/github/Homebrew/homebrew/master/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-
 class Openmodelica < Formula
   desc "OpenModelica is an open-source Modelica-based modeling and simulation environment intended for industrial and academic usage."
   homepage "https://openmodelica.org/"
   url "https://github.com/RexFuzzle/OpenModelica/releases/download/v1.9.3/OpenModelica_v1.9.3_Complete.tar.gz"
   version "v1.9.3"
-  sha256 "aa31b385b16678e20dd1cb85579eba0c27e78164886fc6ecd51543110237345b"
-  head "https://github.com/OpenModelica/OpenModelica.git", :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
+  sha256 "1cd3e5311a507b6dba676d5e91ed210147788d886bcd1405a97598516eaa38cd"
+
+  head "https://github.com/OpenModelica/OpenModelica.git"
+                                         #,:revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
                                          #    :branch => "v1.9.3"
+  devel do
+    url "https://github.com/RexFuzzle/OpenModelica/releases/download/v1.9.4-dev-OSX/OpenModelica_v1.9.4_Devel.tar.gz"
+    sha256 "7174cd72776ef691129c0dacebc508b317ff51a6c22ce4d64283305106857240"
+  end
   depends_on "autoconf"
   depends_on "gettext"
   depends_on "liblas"
@@ -29,13 +31,16 @@ class Openmodelica < Formula
   depends_on "libtool"
   depends_on "ncurses"
   depends_on "automake"
+  # depends_on "open-mpi"
+  # depends_on "hwloc"
   conflicts_with "hwloc", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
 	conflicts_with "open-mpi", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
 
   def install
-    ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
-    ENV['LDFLAGS']='-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib'
+    # ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
+    # ENV['LDFLAGS']='-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib'
     system "svn ls https://openmodelica.org/svn/OpenModelica --non-interactive --trust-server-cert"
+    # system "git submodule update --recusive"
     system "autoconf"
     system "./configure", "--disable-debug",
                           "--with-omniORB",
@@ -45,8 +50,8 @@ class Openmodelica < Formula
                           "--disable-paramodelica",
                           "--disable-omplot",
                           "--prefix=#{prefix}"
-    system "make -j6 omc"
-    system "make -j6 omlibrary-all"
+    system "make -j7 omc"
+    system "make -j7 omlibrary-all"
     # system "(cd testsuite/partest && ./runtests.pl)"
     prefix.install Dir["build/*"]
   end

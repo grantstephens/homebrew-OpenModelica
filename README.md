@@ -10,7 +10,7 @@ brew install subversion
 brew tap homebrew/science
 brew tap homebrew/dupes
 brew tap RexFuzzle/OpenModelica
-brew install OpenModelica --HEAD
+brew install OpenModelica
 ```
 Open MPI and hwloc cause issues with the compiling process but can be installed afterwards again by doing
 ```
@@ -18,5 +18,5 @@ brew install open-mpi hwloc
 ```
 If the install is failing you can try the following to see what is going on:
 ```
-brew install --verbose --debug --HEAD openmodelica
+brew install --verbose --debug openmodelica
 ```
