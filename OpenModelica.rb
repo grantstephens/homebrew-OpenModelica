@@ -5,9 +5,9 @@
 class Openmodelica < Formula
   desc "OpenModelica is an open-source Modelica-based modeling and simulation environment intended for industrial and academic usage."
   homepage "https://openmodelica.org/"
-  # url "https://github.com/OpenModelica/OpenModelica/archive/v1.9.3.tar.gz"
-  version "v1.9.4-working"
-  sha256 ""
+  url "https://github.com/RexFuzzle/OpenModelica/releases/download/v1.9.3/OpenModelica_v1.9.3_Complete.tar.gz"
+  version "v1.9.3"
+  sha256 "68e38d81bc80b6b814ebd5aa03eb52e0c50c0a4a7623adb341264b6f944b1d87"
   head "https://github.com/OpenModelica/OpenModelica.git", :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
@@ -35,7 +35,7 @@ class Openmodelica < Formula
   def install
     ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
     ENV['LDFLAGS']='-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib'
-		system "svn ls https://openmodelica.org/svn/OpenModelica --non-interactive --trust-server-cert"
+    system "svn ls https://openmodelica.org/svn/OpenModelica --non-interactive --trust-server-cert"
     system "autoconf"
     system "./configure", "--disable-debug",
                           "--with-omniORB",
@@ -44,7 +44,7 @@ class Openmodelica < Formula
                           "--without-paradiseo",
                           "--disable-paramodelica",
                           "--disable-omplot",
-													"--prefix=#{prefix}"
+                          "--prefix=#{prefix}"
     system "make -j omc"
     system "make -j omlibrary-all"
     # system "(cd testsuite/partest && ./runtests.pl)"
