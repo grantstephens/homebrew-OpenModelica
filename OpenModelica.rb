@@ -7,7 +7,7 @@ class Openmodelica < Formula
   homepage "https://openmodelica.org/"
   url "https://github.com/RexFuzzle/OpenModelica/releases/download/v1.9.3/OpenModelica_v1.9.3_Complete.tar.gz"
   version "v1.9.3"
-  sha256 "68e38d81bc80b6b814ebd5aa03eb52e0c50c0a4a7623adb341264b6f944b1d87"
+  sha256 "aa31b385b16678e20dd1cb85579eba0c27e78164886fc6ecd51543110237345b"
   head "https://github.com/OpenModelica/OpenModelica.git", :revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
