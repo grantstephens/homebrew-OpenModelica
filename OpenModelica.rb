@@ -45,8 +45,8 @@ class Openmodelica < Formula
                           "--disable-paramodelica",
                           "--disable-omplot",
                           "--prefix=#{prefix}"
-    system "make -j omc"
-    system "make -j omlibrary-all"
+    system "make -j6 omc"
+    system "make -j6 omlibrary-all"
     # system "(cd testsuite/partest && ./runtests.pl)"
     prefix.install Dir["build/*"]
   end
