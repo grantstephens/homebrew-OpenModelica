@@ -20,3 +20,9 @@ If the install is failing you can try the following to see what is going on:
 ```
 brew install --verbose --debug openmodelica
 ```
+## Head version
+The head version can be installed using:
+```
+brew install openmodelica --head
+```
+This is NOT the head of the OpenModelica project, but the last known commit to work on OsX whithout any strange configure commands. If you find a newer version that works please inform me.

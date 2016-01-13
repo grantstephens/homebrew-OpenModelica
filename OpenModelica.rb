@@ -5,7 +5,7 @@ class Openmodelica < Formula
   version "v1.9.3"
   sha256 "1cd3e5311a507b6dba676d5e91ed210147788d886bcd1405a97598516eaa38cd"
 
-  head "https://github.com/OpenModelica/OpenModelica.git"
+  head "https://github.com/OpenModelica/OpenModelica.git" ,:revision => "4ab25f58d4b2a779b1db9e7feec9cbdbf418cf0c"
                                          #,:revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
