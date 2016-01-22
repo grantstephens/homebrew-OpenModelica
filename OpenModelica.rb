@@ -14,6 +14,13 @@ class Openmodelica < Formula
     url "https://github.com/RexFuzzle/OpenModelica/releases/download/v1.9.4-dev-OSX/OpenModelica_v1.9.4_Devel.tar.gz"
     sha256 "7174cd72776ef691129c0dacebc508b317ff51a6c22ce4d64283305106857240"
   end
+
+bottle do
+  root_url "https://github.com/RexFuzzle/OpenModelica/releases/download/v1.9.3"
+  revision 1
+  sha256 "1637ed13b11ebb25c6db2a8aac097667f798ae06cd2a54148cf5b88e7314736f" => :el_capitan
+end
+
   depends_on "autoconf"
   depends_on "gettext"
   depends_on "liblas"
