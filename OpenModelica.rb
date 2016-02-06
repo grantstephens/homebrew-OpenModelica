@@ -1,11 +1,12 @@
-class Openmodelica < Formula
+\class Openmodelica < Formula
   desc "OpenModelica is an open-source Modelica-based modeling and simulation environment intended for industrial and academic usage."
   homepage "https://openmodelica.org/"
   url "https://github.com/RexFuzzle/OpenModelica/releases/download/v1.9.3/OpenModelica_v1.9.3_Complete.tar.gz"
   version "v1.9.3"
   sha256 "1cd3e5311a507b6dba676d5e91ed210147788d886bcd1405a97598516eaa38cd"
 
-  head "https://github.com/OpenModelica/OpenModelica.git" ,:revision => "4ab25f58d4b2a779b1db9e7feec9cbdbf418cf0c"
+  head "https://github.com/OpenModelica/OpenModelica.git"
+                                         # ,:revision => "4ab25f58d4b2a779b1db9e7feec9cbdbf418cf0c"
                                          #,:revision => "c3dd385ae1d2e287aa3acce84a97917e427e32ad"
                                          # or :branch => "develop"
                                          # or :tag => "1_0_release",
@@ -37,10 +38,10 @@ end
   depends_on "libtool"
   depends_on "ncurses"
   depends_on "automake"
-  # depends_on "open-mpi"
-  # depends_on "hwloc"
-  conflicts_with "hwloc", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
-	conflicts_with "open-mpi", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
+  depends_on "open-mpi"
+  depends_on "hwloc"
+  # conflicts_with "hwloc", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
+	# conflicts_with "open-mpi", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
 
   def install
     # ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
@@ -50,12 +51,9 @@ end
     system "autoconf"
     system "./configure", "--disable-debug",
                           "--with-omniORB",
-                          "--disable-omnotebook",
-                          "--disable-modelica3d",
-                          "--without-paradiseo",
-                          "--disable-paramodelica",
-                          "--disable-omplot",
-                          "--prefix=#{prefix}"
+                          "--prefix=#{prefix}",
+                          "--with-lapack='-llapack -lblas'"
+
     system "make -j7 omc"
     system "make -j7 omlibrary-all"
     # system "(cd testsuite/partest && ./runtests.pl)"
