@@ -21,38 +21,39 @@ bottle do
   sha256 "1637ed13b11ebb25c6db2a8aac097667f798ae06cd2a54148cf5b88e7314736f" => :el_capitan
 end
 
-  depends_on "autoconf"
-  depends_on "gettext"
-  depends_on "liblas"
-  depends_on "lapack"
-  depends_on "omniorb"
 	depends_on "qt4"
+  depends_on "autoconf"
+  depends_on "automake"
   depends_on "boost"
-  depends_on "lp_solve"
   depends_on "cmake"
+  depends_on "expat"
+  depends_on "gettext"
+  depends_on "git"
+  depends_on "gnu-sed"
   depends_on "hdf5"
+  depends_on "hwloc"
+  depends_on "lapack"
+  depends_on "liblas"
+  depends_on "libtool"
+  depends_on "lp_solve"
+  depends_on "ncurses"
+  depends_on "omniorb"
+  depends_on "openblas"
   depends_on "readline"
   depends_on "sundials"
-  depends_on "gnu-sed"
   depends_on "xz"
-  depends_on "libtool"
-  depends_on "ncurses"
-  depends_on "automake"
-  depends_on "open-mpi"
-  depends_on "hwloc"
-  # conflicts_with "hwloc", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
-	# conflicts_with "open-mpi", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
+	conflicts_with "open-mpi", :because => "Causes issues in compiling. Can be reinstalled afterwards again"
 
   def install
-    # ENV['CFLAGS']='-I/usr/local/opt/gettext/include -I /usr/local/Cellar/lp_solve/5.5.2.0/bin'
-    # ENV['LDFLAGS']='-L/usr/local/opt/gettext/lib -L/usr/local/Cellar/lp_solve/5.5.2.0/lib'
+    ENV['LDFLAGS']='-L/usr/local/opt/openblas/lib'
+    ENV['CPPFLAGS']='-I/usr/local/opt/openblas/include'
     system "svn ls https://openmodelica.org/svn/OpenModelica --non-interactive --trust-server-cert"
-    # system "git submodule update --recusive"
     system "autoconf"
     system "./configure", "--disable-debug",
+                          "--with-lapack=-lopenblas",
+                          "--disable-modelica3d",
                           "--with-omniORB",
-                          "--prefix=#{prefix}",
-                          "--with-lapack='-llapack -lblas'"
+                          "--prefix=#{prefix}"
 
     system "make -j7 omc"
     system "make -j7 omlibrary-all"
@@ -70,6 +71,6 @@ end
     #
     # The installed folder is not in the path, so use the entire path to any
     # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    system "#{bin}/omc --version"
   end
 end
