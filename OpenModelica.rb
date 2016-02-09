@@ -48,6 +48,7 @@ class Openmodelica < Formula
     system "make", "omc"
     if build.with? "library"
       system "svn", "ls", "https://openmodelica.org/svn/OpenModelica", "--non-interactive", "--trust-server-cert"
+      system "svn", "ls", "https://svn.modelica.org/projects/Modelica_ElectricalSystems/InstantaneousSymmetricalComponents", "--non-interactive", "--trust-server-cert"
       system "make", "omlibrary-all"
     end
     prefix.install Dir["build/*"]
