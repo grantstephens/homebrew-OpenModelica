@@ -16,7 +16,7 @@ class Openmodelica < Formula
   depends_on "expat"
   depends_on "gettext"
   depends_on "gnu-sed"
-  depends_on "hdf5"
+  depends_on "homebrew/science/hdf5"
   depends_on "homebrew/dupes/lapack"
   depends_on "liblas"
   depends_on "libtool" =>:build
