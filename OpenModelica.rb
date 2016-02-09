@@ -23,7 +23,7 @@ class Openmodelica < Formula
   depends_on "lp_solve"
   depends_on "ncurses"
   depends_on "openblas"
-  depends_on "pkg-config"
+  depends_on "pkg-config" =>:build
   depends_on "readline"
   depends_on "sundials" => "without-mpi"
   depends_on "xz"
@@ -47,6 +47,7 @@ class Openmodelica < Formula
     system "./configure", *args
     system "make", "omc"
     if build.with? "library"
+      system "svn", "ls", "https://openmodelica.org/svn/OpenModelica", "--non-interactive", "--trust-server-cert"
       system "make", "omlibrary-all"
     end
     prefix.install Dir["build/*"]
