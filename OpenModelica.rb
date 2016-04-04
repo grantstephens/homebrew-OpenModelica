@@ -8,6 +8,7 @@ class Openmodelica < Formula
     option "with-library", "Build with OMLibraries"
   end
   bottle do
+    root_url "https://github.com/RexFuzzle/homebrew-OpenModelica/releases/download/v1.9.5/"
     sha256 "75dd1686bf73c21234f93bd097c55c72997b1147874c73d58c1e20a4f0c6f4e6" => :el_capitan
   end
 
