@@ -8,27 +8,18 @@ class Openmodelica < Formula
     option "with-library", "Build with OMLibraries"
   end
 
-  depends_on "qt"
+  depends_on "qt" =>:build
   depends_on "autoconf" =>:build
   depends_on "automake" =>:build
-  depends_on "boost"
   depends_on "cmake" =>:build
-  depends_on "expat"
   depends_on "gettext"
-  depends_on "gnu-sed"
-  depends_on "homebrew/science/hdf5"
-  depends_on "homebrew/dupes/lapack"
-  depends_on "liblas"
+  depends_on "gnu-sed" =>:build
   depends_on "libtool" =>:build
-  depends_on "lp_solve"
-  depends_on "ncurses"
+  depends_on "homebrew/science/lp_solve"
   depends_on "openblas"
   depends_on "pkg-config" =>:build
-  depends_on "readline"
-  depends_on "sundials" => "without-mpi"
-  depends_on "xz"
-  conflicts_with "open-mpi", :because => "Causes issues in compiling."
-  conflicts_with "hwloc", :because => "Causes issues in compiling."
+  depends_on "readline" =>:build
+  depends_on "xz" =>:build
 
   depends_on "omniorb" => :optional
 
@@ -49,7 +40,7 @@ class Openmodelica < Formula
     if build.with? "library"
       system "svn", "ls", "https://openmodelica.org/svn/OpenModelica", "--non-interactive", "--trust-server-cert"
       system "svn", "ls", "https://svn.modelica.org/projects/Modelica_ElectricalSystems/InstantaneousSymmetricalComponents", "--non-interactive", "--trust-server-cert"
-      system "make", "omlibrary-all"
+      system "make", "omlibrary-core"
     end
     prefix.install Dir["build/*"]
   end
