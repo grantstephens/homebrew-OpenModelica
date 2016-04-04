@@ -9,7 +9,7 @@ class Openmodelica < Formula
   end
   bottle do
     root_url "https://github.com/RexFuzzle/homebrew-OpenModelica/releases/download/v1.9.5"
-    sha256 "0036e3102db4a805e8ae5a4e1d00d589b692e15a00cd63f2532ab9674faa47fe" => :el_capitan
+    sha256 "81e5050f70edb2e4ff0580c6937801c9c9bffa6a2402bf4937524d8e05b900cc" => :el_capitan
   end
 
   depends_on "qt" =>:build
