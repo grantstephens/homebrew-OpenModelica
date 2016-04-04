@@ -1,11 +1,14 @@
 class Openmodelica < Formula
   desc "Open-source modeling and simulation tool"
   homepage "https://openmodelica.org/"
-  url "https://github.com/OpenModelica/OpenModelica/releases/download/v1.9.3/openmodelica_1.9.3.tar.xz"
-  sha256 "76d53076ae2681183be5f90574e4bd83203d455d1ddc31b93812c392859a667a"
+  url "https://github.com/OpenModelica/OpenModelica/releases/download/v1.9.5/openmodelica_1.9.5.tar.xz"
+  sha256 "d9ed8ce13a764ed3ed36a52859f4d23e3f3fae0cf5af1fe4a9db4b9ba702d511"
   head do
     url "https://github.com/OpenModelica/OpenModelica.git"
     option "with-library", "Build with OMLibraries"
+  end
+  bottle do
+    sha256 "75dd1686bf73c21234f93bd097c55c72997b1147874c73d58c1e20a4f0c6f4e6" => :el_capitan
   end
 
   depends_on "qt" =>:build
